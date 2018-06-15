@@ -141,7 +141,7 @@ with tf.variable_scope('vgg_16/fc8'):
 #create upsampling arrary
 upsample_filter_np_x2_2 = bilinear_upsample_weights(2,number_of_classes)
 #create upsampling tensor
-upsample_filter_tensor_x2_2 = tf.variable(upsample_filter_np_x2_2,name='vgg_16/fc8/16s_t_conv_x2')
+upsample_filter_tensor_x2_2 = tf.Variable(upsample_filter_np_x2_2,name='vgg_16/fc8/16s_t_conv_x2')
 #transpose converlution 2s upsampled_logits by upsample_filter_tensor_x2_2 
 upsampled_logits = tf.nn.conv2d_transpose(upsampled_logits,upsample_filter_tensor_x2_2,
                                           output_shape=tf.shape(aux_logits_8s),
@@ -152,7 +152,7 @@ upsampled_logits = upsampled_logits + aux_logits_8s
 #upsampling arrary 8s 
 upsample_filter_np_x8 = bilinear_upsample_weights(8,number_of_classes)
 #upsampling tensor 8s
-upsample_filter_tensor_x8 = tf.variable(upsample_filter_np_x8,name='vgg_16/fc8/8s_t_conv_x8')
+upsample_filter_tensor_x8 = tf.Variable(upsample_filter_np_x8,name='vgg_16/fc8/8s_t_conv_x8')
 
 #upsample tensor 16s
 # upsample_filter_tensor_x16 = tf.Variable(upsample_filter_np_x16, name='vgg_16/fc8/t_conv_x16')
